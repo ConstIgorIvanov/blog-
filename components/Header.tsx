@@ -3,13 +3,15 @@ import React from 'react';
 import Link from 'next/link';
 
 import { getCategories } from '../services';
+import { Category } from '../types/types';
 
 const Header = () => {
-  const [categories, setCategories] = React.useState<any[]>([]);
+  const [categories, setCategories] = React.useState<Category[]>([]);
 
   React.useEffect(() => {
     getCategories().then((categories) => setCategories(categories));
   }, []);
+
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="border-b w-full inline-block border-blue-400 py-8">

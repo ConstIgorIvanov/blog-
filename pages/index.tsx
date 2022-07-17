@@ -3,8 +3,10 @@ import Head from 'next/head';
 import { getPosts } from '../services/index';
 import { PostCard, PostWidget, Categories } from '../components/index';
 
+import { Post } from '../types/types';
+
 interface HomeProps {
-  posts: any[];
+  posts: { node: Post }[];
 }
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
@@ -33,11 +35,11 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   );
 };
 
+export default Home;
+
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
   return {
     props: { posts },
   };
 }
-
-export default Home;

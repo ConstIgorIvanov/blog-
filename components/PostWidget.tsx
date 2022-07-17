@@ -3,21 +3,24 @@ import moment from 'moment';
 import Link from 'next/link';
 
 import { getRecentPosts, getSimilarPosts } from '../services';
-
+import { Category, Post } from '../types/types';
 interface PostWidgetI {
-  categories: any;
-  slug?: any;
+  categories?: Category[];
+  slug?: string;
 }
 
 const PostWidget: React.FC<PostWidgetI> = ({ categories, slug }) => {
-  const [relatedPosts, setRelatedPosts] = React.useState<any[]>([]);
+  const [relatedPosts, setRelatedPosts] = React.useState<Post[]>([]);
+
   React.useEffect(() => {
-    if (slug) {
-      getSimilarPosts(categories, slug).then((res) => setRelatedPosts(res));
+    if (slug && categories) {
+      const newArray = categories.map((category) => category.slug);
+      getSimilarPosts(newArray, slug).then((res) => setRelatedPosts(res));
     } else {
       getRecentPosts().then((res) => setRelatedPosts(res));
     }
   }, [slug]);
+
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b pb-4">
