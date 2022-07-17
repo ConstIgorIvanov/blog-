@@ -2,13 +2,18 @@ export interface Post {
   title: string;
   slug: string;
   excerpt: string;
-  content: string;
+  content: Content;
   featuredimage: Photo;
   featuredpost: boolean;
   author: Author;
   categories: Category[];
   createdAt: string;
 }
+type Content = {
+  raw: { children: Children[] };
+};
+
+type Children = { children: { text: string; obj?: any }[]; type: string };
 
 export interface Category {
   id: string;
