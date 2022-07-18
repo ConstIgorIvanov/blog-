@@ -106,6 +106,14 @@ export const getPostsDetails = async (slug) => {
           photo {
             url
           }
+          posts {
+            title
+            slug
+            featuredimage {
+              url
+            }
+            createdAt
+          }
         }
         createdAt
         slug

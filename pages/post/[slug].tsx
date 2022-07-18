@@ -12,6 +12,7 @@ import {
   Comments,
   CommentsForm,
 } from '../../components';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 interface PostDetailsProps {
   post: Post;
@@ -40,7 +41,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post }) => {
 
 export default PostDetails;
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ params }: Params) {
   const data = await getPostsDetails(params.slug);
   return {
     props: {

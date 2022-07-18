@@ -1,4 +1,6 @@
+import moment from 'moment';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { Author } from '../types/types';
@@ -21,7 +23,25 @@ const Author: React.FC<AuthorProps> = ({ author }) => {
         />
       </div>
       <h3 className="text-white text-xl font-bold my-4">{author.name}</h3>
-      <p className="text-white text-lg">{author.bio}</p>
+      <p className="text-white text-lg mb-4">{author.bio}</p>
+      <div className="flex flex-nowrap overflow-x-scroll">
+        {author.posts.map((post) => (
+          <div key={post.slug} className="w-full flex  text-white mb-4">
+            <img
+              src={post.featuredimage.url}
+              className="align-middle rounded-xl"
+              alt={post.title}
+              height="60px"
+              width="60px"></img>
+            <div className="ml-4">
+              <p className="font-xs">{moment(post.createdAt).format('MMM DD, YYYY')}</p>
+              <Link href={`/post/${post.slug}`} className="text-md">
+                {post.title}
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
