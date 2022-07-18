@@ -24,9 +24,9 @@ const Author: React.FC<AuthorProps> = ({ author }) => {
       </div>
       <h3 className="text-white text-xl font-bold my-4">{author.name}</h3>
       <p className="text-white text-lg mb-4">{author.bio}</p>
-      <div className="flex flex-nowrap overflow-x-scroll">
+      <div className="flex flex-nowrap overflow-x-auto">
         {author.posts.map((post) => (
-          <div key={post.slug} className="w-full flex  text-white mb-4">
+          <div key={post.slug} className="mr-8 flex text-white mb-4">
             <img
               src={post.featuredimage.url}
               className="align-middle rounded-xl"

@@ -25,6 +25,7 @@ export interface Comment {
   name: string;
   email: string;
   comment: string;
+  createdAt: string;
 }
 export interface Author {
   name: string;
