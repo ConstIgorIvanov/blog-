@@ -30,7 +30,7 @@ const PostWidget: React.FC<PostWidgetI> = ({ categories, slug }) => {
         <div key={post.title} className="w-full flex mb-4">
           <img
             src={post.featuredimage.url}
-            className="align-middle rounded-full"
+            className="align-middle rounded-full h-12 w-12"
             alt={post.title}
             height="60px"
             width="60px"></img>

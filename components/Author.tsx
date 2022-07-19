@@ -26,7 +26,7 @@ const Author: React.FC<AuthorProps> = ({ author }) => {
       <p className="text-white text-lg mb-4">{author.bio}</p>
       <div className="flex flex-nowrap overflow-x-auto">
         {author.posts.map((post) => (
-          <div key={post.slug} className="mr-8 flex text-white mb-4">
+          <div key={post.slug} className="mr-8 flex flex-none text-white mb-4 cursor-pointer">
             <img
               src={post.featuredimage.url}
               className="align-middle rounded-xl"
@@ -36,7 +36,9 @@ const Author: React.FC<AuthorProps> = ({ author }) => {
             <div className="ml-4">
               <p className="font-xs">{moment(post.createdAt).format('MMM DD, YYYY')}</p>
               <Link href={`/post/${post.slug}`} className="text-md">
-                {post.title}
+                <p className="max-w-xs whitespace-nowrap overflow-hidden text-ellipsis">
+                  {post.title}
+                </p>
               </Link>
             </div>
           </div>
